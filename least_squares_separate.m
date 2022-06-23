@@ -190,7 +190,8 @@ if ~exist('nuisance', 'var')
     end
 elseif iscell(nuisance)
     if length(nuisance) ~= n_runs
-        error('Invalid input. There are %d runs in VY, but %d runs in nuisance.')
+        error('Invalid input. There are %d runs in VY, but %d runs in nuisance.', ...
+                length(nuisance), n_runs);
     end
     for i = 1:n_runs
         if isempty(nuisance{i})
@@ -290,7 +291,7 @@ end
 function [onsets, duration, n_trials] = parse_onsets(onsets, n_runs)
 % check if input for onsets and cov_onsets is valid, parse into onsets and duration and
 % apply reasonable defaults
-   
+
     if iscell(onsets)
         if length(onsets) ~= n_runs
             error('Invalid input. There are %d runs in VY, but %d runs in onsets.', ...
